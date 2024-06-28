@@ -53,11 +53,11 @@ var ferrari: Automovel = Automovel()
 
 // Para alterar uma propriedade, você precisa chamar o objeto e atribuir um novo valor a propriedade
 ferrari.cavaloDePotencia = 1200
-print(ferrari.cavaloDePotencia)
+//print(ferrari.cavaloDePotencia)
 
 var uno: Automovel = Automovel()
 uno.cavaloDePotencia = 1500
-print(uno.cavaloDePotencia)
+//print(uno.cavaloDePotencia)
 
 
 //MARK: - Construtores
@@ -82,12 +82,12 @@ class Pessoa {
 // Neste exemplo, estamos gerando a instancia de uma forma diferente -> a instancia é gerada QUANDO preenchido todas as propriedades
 // do metodo construtor
 var caio: Pessoa = Pessoa(nome: "Caio", idade: 22, peso: 80, altura: 1.82)
-print(caio.idade)
-print(caio.peso)
+//print(caio.idade)
+//print(caio.peso)
 
 var pedro: Pessoa = Pessoa(nome: "Pedro", idade: 45, peso: 92, altura: 1.77)
-print(pedro.idade)
-print(pedro.peso)
+//print(pedro.idade)
+//print(pedro.peso)
 
 //MARK: Se caso NÃO TEM VALOR INICIAL, VOCÊ PRECISA PASSAR ELE NO INIT!!!!!!
 class Celular {
@@ -147,8 +147,26 @@ var boloCasamento: Bolo = Bolo(peso: 50, preco: 2000, sabor: ["Chocolate", "Baun
 //   Para usar este método, você deve criar uma instância da classe, chamar este método e armazenar o valor retornado em uma variável. Em seguida, você pode imprimir esse valor.
 // print("Saldo atual: R$\(saldoAtual)")
 
+class ContaPoupanca {
+  var saldo: Double
 
+  init(saldo: Double) {
+    self.saldo = saldo
+  }
 
+  func depositar(valor: Double) {
+    saldo = saldo + valor
+  }
+
+  func consultarSaldo() -> Double {
+    return saldo
+  }
+}
+
+//var minhaConta: ContaPoupanca = ContaPoupanca(saldo: 1000)
+//print(minhaConta.consultarSaldo())
+//minhaConta.depositar(valor: 1000)
+//print(minhaConta.consultarSaldo())
 
 
 // Exercício 2: Gerenciador de Filmes
@@ -166,8 +184,25 @@ var boloCasamento: Bolo = Bolo(peso: 50, preco: 2000, sabor: ["Chocolate", "Baun
 
 //   Para usar este método, crie uma instância da classe, chame o método e armazene a informação retornada em uma variável. Em seguida, imprima essa variável para visualizar os detalhes do filme.
 
+class Filme {
+  var titulo: String
+  var diretor: String
+  var ano: Int
+
+  init(titulo: String, diretor: String, ano: Int) {
+    self.titulo = titulo
+    self.diretor = diretor
+    self.ano = ano
+  }
+
+  func exibirInfo() -> String {
+    return "O título é: \(titulo), e o diretor é: \(diretor) e o ano de lançamento foi em \(ano)"
+  }
+}
 
 
+var avatar: Filme = Filme(titulo: "Avatar", diretor: "Caio Fabrini", ano: 2022)
+//print(avatar.exibirInfo())
 
 
 // Exercício 3: Sistema de Registro de Alunos
@@ -185,3 +220,24 @@ var boloCasamento: Bolo = Bolo(peso: 50, preco: 2000, sabor: ["Chocolate", "Baun
 //   Para utilizar este método, crie uma instância da classe, invoque o método para calcular a média, armazene esse valor em uma variável e imprima a média para visualizar.
 // print("Média das notas de \(aluno.nome): \(media)")
 
+class Aluno {
+
+  var nome: String
+  var notas: [Double]
+
+  init(nome: String, notas: [Double]) {
+    self.nome = nome
+    self.notas = notas
+  }
+
+  func calcularMedia() -> Double {
+    var soma: Double = 0
+    for nota in notas {
+      soma = soma + nota
+    }
+    return soma / Double(notas.count)
+  }
+}
+
+var alunoCaio: Aluno = Aluno(nome: "Caio", notas: [5,7,8,9])
+print("Média das notas de \(alunoCaio.nome): \(alunoCaio.calcularMedia())")
