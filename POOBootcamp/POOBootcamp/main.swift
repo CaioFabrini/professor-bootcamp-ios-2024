@@ -240,7 +240,7 @@ class Aluno {
 }
 
 var alunoCaio: Aluno = Aluno(nome: "Caio", notas: [5,7,8,9])
-print("Média das notas de \(alunoCaio.nome): \(alunoCaio.calcularMedia())")
+//print("Média das notas de \(alunoCaio.nome): \(alunoCaio.calcularMedia())")
 
 
 // MARK: - Herança
@@ -275,3 +275,90 @@ class Gato: Animal {
 }
 
 var bartolomeu: Gato = Gato(bebeLeite: true, nome: "Bartolomeu", cor: "Marrom", peso: 5)
+
+
+// MARK: - Encapsulamento
+// O encapsulamento é a prática de manter os detalhes de implementação de um objeto escondidos e seguros de acesso externo. Isso é feito usando modificadores de acesso para restringir o acesso às propriedades e métodos de uma classe.
+// De criar variaveis/função get e set
+// get -> pegar/acessar/consultar valor
+// set -> setar novo valor/substituir o valor atual por um novo
+// Tudo que você coloca sendo private -> ele só existe dentro daquele bloco!!
+
+class Computador {
+  private var armazenamento: Int
+  var processador: String
+  var memoriaRam: Int
+
+  init(processador: String, armazenamento: Int, memoriaRam: Int) {
+    self.processador = processador
+    self.armazenamento = armazenamento
+    self.memoriaRam = memoriaRam
+  }
+
+  // função set
+  func melhoriaArmazenamento(armazenamentoNovo: Int) {
+    if validaNovoArmazenamento(novoArmazenamento: armazenamentoNovo) {
+      armazenamento = armazenamentoNovo
+    }
+  }
+
+  // função get
+  func getArmazenamento() -> Int {
+    return armazenamento
+  }
+
+  private func validaNovoArmazenamento(novoArmazenamento: Int) -> Bool {
+    let eValido: Bool = armazenamento < novoArmazenamento
+    return eValido
+  }
+}
+
+var meuComputador: Computador = Computador(processador: "m1", armazenamento: 10, memoriaRam: 10)
+
+// Quando declaramos uma função ou variaveis que sejam private, você não consegue chama-las ou atribuir um novo valor fora do bloco de codigo onde ela se mantem.
+// meuComputador.armazenamento
+
+// set
+meuComputador.melhoriaArmazenamento(armazenamentoNovo: 20)
+
+// get
+//print(meuComputador.getArmazenamento())
+
+
+
+// MARK: - Polimorfismo
+// O polimorfismo permite que objetos de diferentes classes sejam tratados como objetos de uma classe comum. Em outras palavras, polimorfismo permite que um método tenha muitas "formas" diferentes, dependendo do objeto que o chama.
+// override -> sobrescrever -> substituir
+
+
+// O polimorfismo, é nada mais, nada menos que quando se tem uma classe FILHA e você quer utilizar o mesmo nome ou função da classe pai, você precisa colocar o override.
+// Segue o exemplo:
+
+class Veiculo {
+  var velocidadeMaxima: Int
+
+  init(velocidadeMaxima: Int) {
+    self.velocidadeMaxima = velocidadeMaxima
+  }
+
+  func detalhesDoVeiculo() -> String {
+    return "Veiculos com velocidade máxima de \(velocidadeMaxima) hm/h"
+  }
+}
+
+class Carro: Veiculo {
+
+
+  override func detalhesDoVeiculo() -> String {
+    return "Carros com velocidade máxima de \(velocidadeMaxima) hm/h"
+  }
+
+// Neste exemplo estamos chamando a funcao da classe pai para que a gente possa aprender que com a palavra reservada super, ela chama SEMPRE TUDO OQUE É DA CLASSE PAI
+//  override func detalhesDoVeiculo() -> String {
+//    let detalhes: String = super.detalhesDoVeiculo()
+//    return "\(detalhes) teste agora vai"
+//  }
+}
+
+//var corolla: Carro = Carro(velocidadeMaxima: 10)
+//print(corolla.detalhesDoVeiculo())
