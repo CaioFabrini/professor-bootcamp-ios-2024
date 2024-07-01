@@ -22,6 +22,40 @@ import Foundation
 // - adicionarEstoque(qtd: Int): Adiciona a quantidade especificada ao estoque existente.
 // - removerEstoque(qtd: Int) -> Bool: Tenta remover a quantidade especificada do estoque; retorna true se for bem-sucedido, false se não houver estoque suficiente.
 
+class Produto {
+  let nome: String
+  var quantidade: Int
+
+  init(nome: String, quantidade: Int) {
+    self.nome = nome
+    self.quantidade = quantidade
+  }
+
+  func adicionarEstoque(qtd: Int) {
+//    quantidade = quantidade + qtd
+    quantidade += qtd
+  }
+
+  func removerEstoque(quantidadeItensRemovidos: Int) -> Bool {
+    if quantidade >= quantidadeItensRemovidos {
+//      quantidade = quantidade - quantidadeItensRemovidos
+      quantidade -= quantidadeItensRemovidos
+      return true
+    } else {
+      return false
+    }
+  }
+}
+
+let iphone: Produto = Produto(nome: "iPhone", quantidade: 10)
+let conseguiRemover: Bool = iphone.removerEstoque(quantidadeItensRemovidos: 5)
+print(conseguiRemover)
+
+
+
+
+
+
 
 
 // Exercício 2: Sistema de Agendamento de Consultas
@@ -361,33 +395,33 @@ class Usuario2 {
 // - Carro: Adiciona a propriedade 'numeroDePortas' (Int).
 // - Motocicleta: Adiciona a propriedade 'cilindrada' (Int).
 class VeiculosPotentes2 {
-    var marca: String
-    var modelo: String
-    var ano: Int
+  var marca: String
+  var modelo: String
+  var ano: Int
 
-    init(marca: String, modelo: String, ano: Int) {
-        self.marca = marca
-        self.modelo = modelo
-        self.ano = ano
-    }
+  init(marca: String, modelo: String, ano: Int) {
+    self.marca = marca
+    self.modelo = modelo
+    self.ano = ano
+  }
 }
 
 class Carro2: VeiculosPotentes2 {
-    var numeroDePortas: Int
+  var numeroDePortas: Int
 
-    init(marca: String, modelo: String, ano: Int, numeroDePortas: Int) {
-        self.numeroDePortas = numeroDePortas
-        super.init(marca: marca, modelo: modelo, ano: ano)
-    }
+  init(marca: String, modelo: String, ano: Int, numeroDePortas: Int) {
+    self.numeroDePortas = numeroDePortas
+    super.init(marca: marca, modelo: modelo, ano: ano)
+  }
 }
 
 class Motocicleta2: VeiculosPotentes2 {
-    var cilindrada: Int
+  var cilindrada: Int
 
-    init(marca: String, modelo: String, ano: Int, cilindrada: Int) {
-        self.cilindrada = cilindrada
-        super.init(marca: marca, modelo: modelo, ano: ano)
-    }
+  init(marca: String, modelo: String, ano: Int, cilindrada: Int) {
+    self.cilindrada = cilindrada
+    super.init(marca: marca, modelo: modelo, ano: ano)
+  }
 }
 
 // Exercício 7: Hierarquia Acadêmica
@@ -405,31 +439,31 @@ class Motocicleta2: VeiculosPotentes2 {
 // - Aluno: Adiciona a propriedade 'curso' (String).
 // - Professor: Adiciona a propriedade 'departamento' (String).
 class Pessoa2 {
-    var nome: String
-    var idade: Int
+  var nome: String
+  var idade: Int
 
-    init(nome: String, idade: Int) {
-        self.nome = nome
-        self.idade = idade
-    }
+  init(nome: String, idade: Int) {
+    self.nome = nome
+    self.idade = idade
+  }
 }
 
 class Aluno2: Pessoa2 {
-    var curso: String
+  var curso: String
 
-    init(nome: String, idade: Int, curso: String) {
-        self.curso = curso
-        super.init(nome: nome, idade: idade)
-    }
+  init(nome: String, idade: Int, curso: String) {
+    self.curso = curso
+    super.init(nome: nome, idade: idade)
+  }
 }
 
 class Professor2: Pessoa2 {
-    var departamento: String
+  var departamento: String
 
-    init(nome: String, idade: Int, departamento: String) {
-        self.departamento = departamento
-        super.init(nome: nome, idade: idade)
-    }
+  init(nome: String, idade: Int, departamento: String) {
+    self.departamento = departamento
+    super.init(nome: nome, idade: idade)
+  }
 }
 
 // Exercício 8: Sistema de Organização de Conteúdo
@@ -447,31 +481,31 @@ class Professor2: Pessoa2 {
 // - Video: Adiciona a propriedade 'duracao' (Int, em minutos).
 // - Artigo: Adiciona a propriedade 'numeroDePalavras' (Int).
 class ConteudoDigital2 {
-    var titulo: String
-    var autor: String
+  var titulo: String
+  var autor: String
 
-    init(titulo: String, autor: String) {
-        self.titulo = titulo
-        self.autor = autor
-    }
+  init(titulo: String, autor: String) {
+    self.titulo = titulo
+    self.autor = autor
+  }
 }
 
 class Video2: ConteudoDigital2 {
-    var duracao: Int
+  var duracao: Int
 
-    init(titulo: String, autor: String, duracao: Int) {
-        self.duracao = duracao
-        super.init(titulo: titulo, autor: autor)
-    }
+  init(titulo: String, autor: String, duracao: Int) {
+    self.duracao = duracao
+    super.init(titulo: titulo, autor: autor)
+  }
 }
 
 class Artigo2: ConteudoDigital2 {
-    var numeroDePalavras: Int
+  var numeroDePalavras: Int
 
-    init(titulo: String, autor: String, numeroDePalavras: Int) {
-        self.numeroDePalavras = numeroDePalavras
-        super.init(titulo: titulo, autor: autor)
-    }
+  init(titulo: String, autor: String, numeroDePalavras: Int) {
+    self.numeroDePalavras = numeroDePalavras
+    super.init(titulo: titulo, autor: autor)
+  }
 }
 
 // Exercício 9: Hierarquia de Imóveis
@@ -489,31 +523,31 @@ class Artigo2: ConteudoDigital2 {
 // - Casa: Adiciona a propriedade 'tamanhoDoTerreno' (Double, em metros quadrados).
 // - Apartamento: Adiciona a propriedade 'andar' (Int).
 class Imovel2 {
-    var endereco: String
-    var preco: Double
+  var endereco: String
+  var preco: Double
 
-    init(endereco: String, preco: Double) {
-        self.endereco = endereco
-        self.preco = preco
-    }
+  init(endereco: String, preco: Double) {
+    self.endereco = endereco
+    self.preco = preco
+  }
 }
 
 class Casa2: Imovel2 {
-    var tamanhoDoTerreno: Double
+  var tamanhoDoTerreno: Double
 
-    init(endereco: String, preco: Double, tamanhoDoTerreno: Double) {
-        self.tamanhoDoTerreno = tamanhoDoTerreno
-        super.init(endereco: endereco, preco: preco)
-    }
+  init(endereco: String, preco: Double, tamanhoDoTerreno: Double) {
+    self.tamanhoDoTerreno = tamanhoDoTerreno
+    super.init(endereco: endereco, preco: preco)
+  }
 }
 
 class Apartamento2: Imovel2 {
-    var andar: Int
+  var andar: Int
 
-    init(endereco: String, preco: Double, andar: Int) {
-        self.andar = andar
-        super.init(endereco: endereco, preco: preco)
-    }
+  init(endereco: String, preco: Double, andar: Int) {
+    self.andar = andar
+    super.init(endereco: endereco, preco: preco)
+  }
 }
 
 // Exercício 10: Cadeia de Restaurantes
@@ -531,29 +565,29 @@ class Apartamento2: Imovel2 {
 // - RestauranteFastFood: Adiciona a propriedade 'tempoMedioDeEntrega' (Int, em minutos).
 // - RestauranteGourmet: Adiciona a propriedade 'chef' (String).
 class Restaurante2 {
-    var nome: String
-    var localizacao: String
+  var nome: String
+  var localizacao: String
 
-    init(nome: String, localizacao: String) {
-        self.nome = nome
-        self.localizacao = localizacao
-    }
+  init(nome: String, localizacao: String) {
+    self.nome = nome
+    self.localizacao = localizacao
+  }
 }
 
 class RestauranteFastFood2: Restaurante2 {
-    var tempoMedioDeEntrega: Int
+  var tempoMedioDeEntrega: Int
 
-    init(nome: String, localizacao: String, tempoMedioDeEntrega: Int) {
-        self.tempoMedioDeEntrega = tempoMedioDeEntrega
-        super.init(nome: nome, localizacao: localizacao)
-    }
+  init(nome: String, localizacao: String, tempoMedioDeEntrega: Int) {
+    self.tempoMedioDeEntrega = tempoMedioDeEntrega
+    super.init(nome: nome, localizacao: localizacao)
+  }
 }
 
 class RestauranteGourmet2: Restaurante2 {
-    var chef: String
+  var chef: String
 
-    init(nome: String, localizacao: String, chef: String) {
-        self.chef = chef
-        super.init(nome: nome, localizacao: localizacao)
-    }
+  init(nome: String, localizacao: String, chef: String) {
+    self.chef = chef
+    super.init(nome: nome, localizacao: localizacao)
+  }
 }
