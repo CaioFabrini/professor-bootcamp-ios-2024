@@ -10,7 +10,7 @@ import Foundation
 //MARK: - Classe -> Modelo de um OBJETO!
 // Atributo / Propriedades = caracteristicas de um objeto
 // Ações = função / métodos
-// CLASSE TRABALHA COM REFERENCE TYPE
+// CLASSE TRABALHA COM REFERENCE TYPE!!!
 
 // Como criar uma classe?
 // Utilizamos a palavra reservada 'class' e na sequencia seu nome sendo, SEMPRE COM A PRIMEIRA LETRA MAIUSCULA.
@@ -362,3 +362,81 @@ class Carro: Veiculo {
 
 //var corolla: Carro = Carro(velocidadeMaxima: 10)
 //print(corolla.detalhesDoVeiculo())
+
+
+// MARK: - Struct
+// Com a struct, não é obrigatorio deixar o construtor de forma explicita
+// Struct NÃO ACEITA HERENÇA!!!
+// Struct aceita apenas PROTOCOLO em sua hierarquia!!
+// Struct trabalha com VALUE TYPE!!!
+
+struct Documento {
+  var quantidadeDeFolhas: Int
+  var tipo: String
+
+  init(quantidadeDeFolhas: Int, tipo: String) {
+    self.quantidadeDeFolhas = quantidadeDeFolhas
+    self.tipo = tipo
+  }
+}
+
+var minhaCNH: Documento = Documento(quantidadeDeFolhas: 5, tipo: "muito cara")
+var meuRG: Documento = Documento(quantidadeDeFolhas: 2, tipo: "documento importante")
+
+//print("quantidadeDeFolhas CNH: \(minhaCNH.quantidadeDeFolhas)")
+//print("quantidadeDeFolhas RH: \(meuRG.quantidadeDeFolhas)")
+//
+//print("---------------------------------------------------------")
+
+minhaCNH = meuRG
+
+//print("quantidadeDeFolhas CNH: \(minhaCNH.quantidadeDeFolhas)")
+//print("quantidadeDeFolhas RH: \(meuRG.quantidadeDeFolhas)")
+//
+//print("---------------------------------------------------------")
+
+minhaCNH.quantidadeDeFolhas = 50
+meuRG.quantidadeDeFolhas = 100
+
+//print("quantidadeDeFolhas CNH: \(minhaCNH.quantidadeDeFolhas)")
+//print("quantidadeDeFolhas RH: \(meuRG.quantidadeDeFolhas)")
+
+
+// struct
+
+//quantidadeDeFolhas CNH: 5
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 2
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 50
+//quantidadeDeFolhas RH: 100
+
+// class
+
+//quantidadeDeFolhas CNH: 5
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 2
+//quantidadeDeFolhas RH: 2
+//---------------------------------------------------------
+//quantidadeDeFolhas CNH: 100
+//quantidadeDeFolhas RH: 100
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
