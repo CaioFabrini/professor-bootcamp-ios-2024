@@ -425,6 +425,71 @@ meuRG.quantidadeDeFolhas = 100
 //quantidadeDeFolhas RH: 100
 
 
+// MARK: - Inicializadores / Construtores
+
+class Casa {
+
+  var numeroDeQuartos: Int
+  var localizacao: String
+
+  // Designated Initializer
+  // Inicializador principal que deve configurar todas as propriedades.
+  init(numeroDeQuartos: Int, localizacao: String) {
+    self.numeroDeQuartos = numeroDeQuartos
+    self.localizacao = localizacao
+  }
+
+  // Convenience Initializer
+  // Inicializador secundário que fornece valores padrão ou simplifica a criação da instância.
+  convenience init() {
+    self.init(numeroDeQuartos: 5, localizacao: "guaruja")
+  }
+
+  convenience init(numeroDeQuartos: Int) {
+    self.init(numeroDeQuartos: numeroDeQuartos, localizacao: "guaruja")
+  }
+
+  // Failable Initializer
+  // Inicializador que pode falhar e retornar nil se as condições não forem atendidas.
+  init?(numeroDeQuartos: Int, localizacao: String, validaQuartos: Bool) {
+    if validaQuartos == false || numeroDeQuartos < 2 {
+      return nil
+    }
+    self.numeroDeQuartos = numeroDeQuartos
+    self.localizacao = localizacao
+  }
+
+  // Required Initializer
+  // Exige que todas as subclasses implementem este inicializador.
+  required init(localizacao: String) {
+    self.localizacao = localizacao
+    self.numeroDeQuartos = 10
+  }
+}
+
+var minhaCasa: Casa = Casa(numeroDeQuartos: 10, localizacao: "nuporanga")
+var minhaCasa2: Casa = Casa()
+var minhaCasa3: Casa = Casa(numeroDeQuartos: 20)
+var minhaCasa4: Casa = Casa(numeroDeQuartos: 0, localizacao: "", validaQuartos: false) ?? Casa()
+
+
+class CasaDePraia: Casa {
+
+  var distanciaDaPraia: Int
+
+  init(distanciaDaPraia: Int) {
+    self.distanciaDaPraia = distanciaDaPraia
+    super.init(numeroDeQuartos: 10, localizacao: "sp")
+  }
+  
+  required init(localizacao: String) {
+    self.distanciaDaPraia = 1000
+    super.init(numeroDeQuartos: 100, localizacao: localizacao)
+  }
+}
+
+//var minhaCasaDePraia: CasaDePraia = CasaDePraia(distanciaDaPraia: 100)
+var minhaCasaDePraia2: CasaDePraia = CasaDePraia(localizacao: "sp")
 
 
 
