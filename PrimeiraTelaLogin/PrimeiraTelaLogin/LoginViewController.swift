@@ -24,8 +24,22 @@ class LoginViewController: UIViewController {
     configElements()
   }
 
+  // Ligações @IBAction representam AÇÃO DOS ELEMENTOS!!
+  // OBS: As ligações @IBAction sempre ficam em baixo dos metodos de ciclo de vida!!
   @IBAction func tappedLoginButton(_ sender: UIButton) {
-    print(#function)
+    let alertController = UIAlertController(title: "Seja bem vindo!", message: "Aproveite o nosso app ;)", preferredStyle: .alert)
+
+    let okButton = UIAlertAction(title: "OK", style: .default) { _ in
+      print("cliquei no OK")
+    }
+
+    let cancelButton = UIAlertAction(title: "Cancelar", style: .cancel) { _ in
+      print("cliquei no Cancelar")
+    }
+
+    alertController.addAction(okButton)
+    alertController.addAction(cancelButton)
+    present(alertController, animated: true)
   }
 
   func configElements() {
@@ -47,12 +61,27 @@ class LoginViewController: UIViewController {
     passwordTextField.layer.borderWidth = 1
 
     loginButton.setTitle("Login", for: .normal)
-    loginButton.backgroundColor = .lightGray
     loginButton.clipsToBounds = true
     loginButton.layer.cornerRadius = 16
-    loginButton.isEnabled = false
+    isEnabledLoginButton(isEnable: false)
   }
 
+  func isEnabledLoginButton(isEnable: Bool) {
+    loginButton.isEnabled = isEnable
+    loginButton.backgroundColor = isEnable ? .systemBlue : .lightGray
+  }
+
+  func isValidEmail(_ email: String) -> Bool {
+      let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+      let emailPred = NSPredicate(format:"SELF MATCHES %@", emailPattern)
+      return emailPred.evaluate(with: email)
+  }
+
+  func isValidPassword(_ password: String) -> Bool {
+      let passwordPattern = ".{6,}"
+      let passwordPred = NSPredicate(format: "SELF MATCHES %@", passwordPattern)
+      return passwordPred.evaluate(with: password)
+  }
 }
 
 extension LoginViewController: UITextFieldDelegate {
@@ -61,13 +90,6 @@ extension LoginViewController: UITextFieldDelegate {
   func textFieldDidBeginEditing(_ textField: UITextField) {
     print(#function)
     textField.layer.borderColor = UIColor.blue.cgColor
-    if emailTextField.text != "" && passwordTextField.text != "" {
-      loginButton.isEnabled = true
-      loginButton.backgroundColor = .systemBlue
-    } else {
-      loginButton.isEnabled = false
-      loginButton.backgroundColor = .lightGray
-    }
   }
 
   // Este metodo é disparado quando o teclado PERDE O FOCO!!
@@ -88,9 +110,14 @@ extension LoginViewController: UITextFieldDelegate {
   func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
     if let text = textField.text as? NSString {
       let newText = text.replacingCharacters(in: range, with: string)
-       print(newText)
+      textField.text = newText
+      if isValidEmail(emailTextField.text ?? "") && isValidPassword(passwordTextField.text ?? "") {
+        isEnabledLoginButton(isEnable: true)
+      } else {
+        isEnabledLoginButton(isEnable: false)
+      }
     }
-    return true
+    return false
   }
 }
 
