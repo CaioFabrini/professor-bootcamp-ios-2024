@@ -7,7 +7,7 @@
 
 import UIKit
 
-class LoginViewController: UIViewController {
+class LoginViewController: BaseViewController {
 
   // LIGAÇÕES @IBOutlet SEMPRE são feitas acima dos metodos de ciclo de vida
 
