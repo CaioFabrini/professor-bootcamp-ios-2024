@@ -18,15 +18,27 @@ class LoginViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    screen?.delegate = self
+    configProtocols()
   }
 
+  func configProtocols() {
+    screen?.delegate = self
+    screen?.emailTextField.delegate = self
+    screen?.passwordTextField.delegate = self
+  }
 
 }
 
 extension LoginViewController: LoginScreenProtocol {
   func tappedLoginButton() {
     print(#function)
+  }
+}
+
+extension LoginViewController: UITextFieldDelegate {
+  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    textField.resignFirstResponder()
+    return true
   }
 }
 
