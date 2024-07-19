@@ -20,10 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     let loginVC = LoginViewController()
 
     // Tornando a tela de inicio sendo NavigationController
-//    let nav = UINavigationController(rootViewController: loginVC)
+    let nav = UINavigationController(rootViewController: loginVC)
 
 
-    window.rootViewController = loginVC
+    window.rootViewController = nav
     window.makeKeyAndVisible()
     self.window = window
   }

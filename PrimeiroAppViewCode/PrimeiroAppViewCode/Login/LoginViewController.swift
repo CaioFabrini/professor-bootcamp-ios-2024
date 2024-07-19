@@ -26,10 +26,15 @@ class LoginViewController: UIViewController {
     screen?.emailTextField.delegate = self
     screen?.passwordTextField.delegate = self
   }
-
 }
 
 extension LoginViewController: LoginScreenProtocol {
+  func tappedRegisterButton() {
+//    present(RegisterViewController(), animated: true)
+
+    navigationController?.pushViewController(RegisterViewController(), animated: true)
+  }
+  
   func tappedLoginButton() {
     print(#function)
   }

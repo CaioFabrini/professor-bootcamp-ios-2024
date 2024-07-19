@@ -21,6 +21,11 @@ import UIKit
 //  fatalError("init(coder:) has not been implemented")
 // }
 // 3 - Criar e configurar elemento (NÃO SE ESQUEÇA DO translatesAutoresizingMaskIntoConstraints = false)
+// 4 - Adicionar elemento (não se esqueça de chamar função)
+// 5 - Configurar constraints (não se esqueça de chamar função)
+// 6 - Chamar no LoadView
+// 7 - Corre pro abraço!!!
+
 
 
 
@@ -32,7 +37,8 @@ import UIKit
 // weak var delegate: NomeDoProtocol?
 
 protocol LoginScreenProtocol: AnyObject {
-      func tappedLoginButton()
+  func tappedLoginButton()
+  func tappedRegisterButton()
 }
 
 
@@ -89,8 +95,22 @@ class LoginScreen: UIView {
     return button
   }()
 
+  lazy var registerButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setTitle("Não tem conta? Cadastre-se", for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+    button.setTitleColor(.systemBlue, for: .normal)
+    button.addTarget(self, action: #selector(tappedRegisterButton), for: .touchUpInside)
+    return button
+  }()
+
   @objc func tappedLoginButton() {
     delegate?.tappedLoginButton()
+  }
+
+  @objc func tappedRegisterButton() {
+    delegate?.tappedRegisterButton()
   }
 
   init() {
@@ -110,6 +130,7 @@ class LoginScreen: UIView {
     addSubview(emailTextField)
     addSubview(passwordTextField)
     addSubview(loginButton)
+    addSubview(registerButton)
   }
 
   func configConstraints() {
@@ -131,6 +152,10 @@ class LoginScreen: UIView {
       passwordTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
       passwordTextField.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
       passwordTextField.heightAnchor.constraint(equalToConstant: 40),
+
+      registerButton.topAnchor.constraint(equalTo: passwordTextField.bottomAnchor, constant: 20),
+      registerButton.centerXAnchor.constraint(equalTo: centerXAnchor),
+      registerButton.heightAnchor.constraint(equalToConstant: 40),
 
       loginButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -50),
       loginButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 40),
