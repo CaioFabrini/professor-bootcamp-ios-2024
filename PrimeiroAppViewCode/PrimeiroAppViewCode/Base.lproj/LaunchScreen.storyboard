@@ -22,11 +22,42 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="person.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="UIW-wI-205">
+                                <rect key="frame" x="146.66666666666666" y="121.33333333333331" width="100" height="96.666666666666686"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="9IG-Or-xik"/>
+                                    <constraint firstAttribute="height" constant="100" id="bJu-VF-J0D"/>
+                                </constraints>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aj1-s3-Aax">
+                                <rect key="frame" x="20" y="269.33333333333331" width="353" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="isr-ot-pxQ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I2W-dW-lCV">
+                                <rect key="frame" x="40" y="728" width="313" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="i6b-HS-8mi"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="UIW-wI-205" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="CPt-6Y-Al4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="I2W-dW-lCV" secondAttribute="trailing" constant="40" id="DFI-MN-kkJ"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Aj1-s3-Aax" secondAttribute="trailing" constant="20" id="OLs-WW-fOv"/>
                             <constraint firstItem="4cX-va-TdM" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="TBn-ct-JLC"/>
+                            <constraint firstItem="UIW-wI-205" firstAttribute="top" secondItem="4cX-va-TdM" secondAttribute="bottom" constant="20" id="VIm-O5-dJK"/>
+                            <constraint firstItem="Aj1-s3-Aax" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="dGH-Wy-so0"/>
+                            <constraint firstItem="Aj1-s3-Aax" firstAttribute="top" secondItem="UIW-wI-205" secondAttribute="bottom" constant="50" id="fSr-OB-3Kg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="I2W-dW-lCV" secondAttribute="bottom" constant="50" id="oXh-VU-yZx"/>
+                            <constraint firstItem="I2W-dW-lCV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="qt6-ke-R38"/>
                             <constraint firstItem="4cX-va-TdM" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="wsU-Vg-Jqr"/>
                         </constraints>
                     </view>
@@ -37,6 +68,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="person.fill" catalog="system" width="128" height="120"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
