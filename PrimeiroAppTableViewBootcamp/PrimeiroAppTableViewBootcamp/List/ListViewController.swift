@@ -64,11 +64,26 @@ extension ListViewController: UITableViewDataSource {
 extension ListViewController: PersonTableViewCellProtocol {
   func tappedDeletePerson(person: Person?) {
     guard let person else { return }
-    for (index, value) in listPerson.enumerated() {
-      if value == person {
-        listPerson.remove(at: index)
-        screen?.tableView.reloadData()
-      }
-    }
+
+    // Opção 1
+    //    for (index, value) in listPerson.enumerated() {
+    //      if value == person {
+    //        listPerson.remove(at: index)
+    //        screen?.tableView.reloadData()
+    //      }
+    //    }
+
+    // Opção 2 -> remove todos que são iguais
+    //    listPerson.removeAll { $0 == person }
+    //    screen?.tableView.reloadData()
+
+    // Opção 3 -> pega o primeiro da lista, SE CASO EXISTIR!!
+    //    if let index = listPerson.firstIndex(of: person) {
+    //      listPerson.remove(at: index)
+    //      screen?.tableView.reloadData()
+    //    }
+
+    
+
   }
 }
