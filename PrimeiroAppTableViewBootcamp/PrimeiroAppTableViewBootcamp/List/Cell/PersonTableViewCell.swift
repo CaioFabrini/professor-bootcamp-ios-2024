@@ -29,8 +29,24 @@ class PersonTableViewCell: UITableViewCell {
   lazy var nameLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = UIFont.boldSystemFont(ofSize: 28)
-    label.numberOfLines = 0
+    label.font = UIFont.boldSystemFont(ofSize: 22)
+    label.numberOfLines = 2
+    label.textAlignment = .left
+    return label
+  }()
+
+  lazy var lastNameLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.boldSystemFont(ofSize: 22)
+    label.textAlignment = .left
+    return label
+  }()
+
+  lazy var ageLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = UIFont.boldSystemFont(ofSize: 22)
     label.textAlignment = .left
     return label
   }()
@@ -49,6 +65,8 @@ class PersonTableViewCell: UITableViewCell {
   func addElements() {
     contentView.addSubview(nameLabel)
     contentView.addSubview(personImageView)
+    contentView.addSubview(lastNameLabel)
+    contentView.addSubview(ageLabel)
   }
 
   func configConstraints() {
@@ -60,16 +78,26 @@ class PersonTableViewCell: UITableViewCell {
       personImageView.heightAnchor.constraint(equalToConstant: 100),
       personImageView.widthAnchor.constraint(equalToConstant: 100),
 
-      nameLabel.centerYAnchor.constraint(equalTo: personImageView.centerYAnchor),
+      nameLabel.topAnchor.constraint(equalTo: personImageView.topAnchor, constant: 5),
       nameLabel.leadingAnchor.constraint(equalTo: personImageView.trailingAnchor, constant: 20),
       nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
 
+      lastNameLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5),
+      lastNameLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+      lastNameLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+
+      ageLabel.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: 5),
+      ageLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+      ageLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
     ])
   }
 
   func setupCell(person: Person) {
     nameLabel.text = "Nome: \(person.name)"
     personImageView.image = UIImage(systemName: person.image)
+    lastNameLabel.text = "Sobrenome: \(person.lastName)"
+    ageLabel.text = "Idade: \(person.age) anos"
+
   }
 
 }
