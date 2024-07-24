@@ -13,18 +13,12 @@ import UIKit
 // Registre sua celula na tableView!!! (tableView.register(PersonTableViewCell.self, forCellReuseIdentifier: PersonTableViewCell.identifier))
 // Configure o numberOfRowsInSection e o cellForRowAt
 
-struct Person {
-  var name: String
-  var lastName: String
-  var age: Int
-  var image: String
-}
-
 class ListViewController: UIViewController {
 
   var screen: ListScreen?
   var listPerson: [Person] = [Person(name: "Caio", lastName: "Fabrini", age: 22, image: "person.circle"),
                               Person(name: "Bárbara", lastName: "Fabrini", age: 21, image: "star.fill"),
+                              Person(name: "Bárbara", lastName: "Brigolin", age: 21, image: "star.fill"),
                               Person(name: "Thiago", lastName: "Teves", age: 30, image: "person.circle"),
                               Person(name: "Matheus", lastName: "Humbro", age: 28, image: "medal.star"),
                               Person(name: "Lucas", lastName: "Costa", age: 26, image: "folder.circle"),
@@ -44,7 +38,10 @@ class ListViewController: UIViewController {
 }
 
 extension ListViewController: UITableViewDelegate {
-
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    let person = listPerson[indexPath.row]
+    print(person.name)
+  }
 }
 
 extension ListViewController: UITableViewDataSource {
@@ -57,9 +54,21 @@ extension ListViewController: UITableViewDataSource {
   // onde configuramos a nossa celula!!
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell
+    cell?.delegate = self
     cell?.setupCell(person: listPerson[indexPath.row])
     return cell ?? UITableViewCell()
   }
 
 }
 
+extension ListViewController: PersonTableViewCellProtocol {
+  func tappedDeletePerson(person: Person?) {
+    guard let person else { return }
+    for (index, value) in listPerson.enumerated() {
+      if value == person {
+        listPerson.remove(at: index)
+        screen?.tableView.reloadData()
+      }
+    }
+  }
+}

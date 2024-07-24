@@ -15,10 +15,16 @@ import UIKit
 // 5- Criar o identifier da celula! Ele deve ser do mesmo nome da classe e de SEU ARQUIVO!!!
 // 6- Depois de configurar toda a celula, crie o metodo de setup!!! Ele será o responsavel para montar toda a sua celula!
 
+protocol PersonTableViewCellProtocol: AnyObject {
+  func tappedDeletePerson(person: Person?)
+}
+
 class PersonTableViewCell: UITableViewCell {
 
 //  static var identifier = "PersonTableViewCell"
   static var identifier = String(describing: PersonTableViewCell.self)
+  var person: Person?
+  weak var delegate: PersonTableViewCellProtocol?
 
   lazy var personImageView: UIImageView = {
     let imageView = UIImageView()
@@ -51,6 +57,23 @@ class PersonTableViewCell: UITableViewCell {
     return label
   }()
 
+  lazy var deleteButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.setTitle("Deletar Usuario", for: .normal)
+    button.titleLabel?.font = UIFont.systemFont(ofSize: 12, weight: .regular)
+    button.setTitleColor(.white, for: .normal)
+    button.backgroundColor = .systemBlue
+    button.clipsToBounds = true
+    button.layer.cornerRadius = 8
+    button.addTarget(self, action: #selector(tappedDeleteButton), for: .touchUpInside)
+    return button
+  }()
+
+  @objc func tappedDeleteButton() {
+    delegate?.tappedDeletePerson(person: person)
+  }
+
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     selectionStyle = .none
@@ -67,13 +90,13 @@ class PersonTableViewCell: UITableViewCell {
     contentView.addSubview(personImageView)
     contentView.addSubview(lastNameLabel)
     contentView.addSubview(ageLabel)
+    contentView.addSubview(deleteButton)
   }
 
   func configConstraints() {
     NSLayoutConstraint.activate([
 
       personImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      personImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
       personImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
       personImageView.heightAnchor.constraint(equalToConstant: 100),
       personImageView.widthAnchor.constraint(equalToConstant: 100),
@@ -89,15 +112,19 @@ class PersonTableViewCell: UITableViewCell {
       ageLabel.topAnchor.constraint(equalTo: lastNameLabel.bottomAnchor, constant: 5),
       ageLabel.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
       ageLabel.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+
+      deleteButton.topAnchor.constraint(equalTo: ageLabel.bottomAnchor, constant: 5),
+      deleteButton.leadingAnchor.constraint(equalTo: nameLabel.leadingAnchor),
+      deleteButton.trailingAnchor.constraint(equalTo: nameLabel.trailingAnchor),
+      deleteButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
     ])
   }
 
   func setupCell(person: Person) {
+    self.person = person
     nameLabel.text = "Nome: \(person.name)"
     personImageView.image = UIImage(systemName: person.image)
     lastNameLabel.text = "Sobrenome: \(person.lastName)"
     ageLabel.text = "Idade: \(person.age) anos"
-
   }
-
 }
