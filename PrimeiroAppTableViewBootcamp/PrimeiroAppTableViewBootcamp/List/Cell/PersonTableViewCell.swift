@@ -20,6 +20,12 @@ class PersonTableViewCell: UITableViewCell {
 //  static var identifier = "PersonTableViewCell"
   static var identifier = String(describing: PersonTableViewCell.self)
 
+  lazy var personImageView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    return imageView
+  }()
+
   lazy var nameLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -42,19 +48,28 @@ class PersonTableViewCell: UITableViewCell {
 
   func addElements() {
     contentView.addSubview(nameLabel)
+    contentView.addSubview(personImageView)
   }
 
   func configConstraints() {
     NSLayoutConstraint.activate([
-      nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+
+      personImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+      personImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+      personImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      personImageView.heightAnchor.constraint(equalToConstant: 100),
+      personImageView.widthAnchor.constraint(equalToConstant: 100),
+
+      nameLabel.centerYAnchor.constraint(equalTo: personImageView.centerYAnchor),
+      nameLabel.leadingAnchor.constraint(equalTo: personImageView.trailingAnchor, constant: 20),
       nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-      nameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
+
     ])
   }
 
-  func setupCell(name: String) {
-    nameLabel.text = name
+  func setupCell(person: Person) {
+    nameLabel.text = "Nome: \(person.name)"
+    personImageView.image = UIImage(systemName: person.image)
   }
 
 }
