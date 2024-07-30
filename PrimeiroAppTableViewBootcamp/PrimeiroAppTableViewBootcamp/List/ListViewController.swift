@@ -83,7 +83,7 @@ extension ListViewController: PersonTableViewCellProtocol {
     //      screen?.tableView.reloadData()
     //    }
 
-    
+
 
   }
 }
