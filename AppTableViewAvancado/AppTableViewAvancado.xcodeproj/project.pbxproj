@@ -15,6 +15,7 @@
 		34F70CD32C584EC200513175 /* ListScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F70CD22C584EC200513175 /* ListScreen.swift */; };
 		34F70CD62C58552D00513175 /* EmployeeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F70CD52C58552D00513175 /* EmployeeTableViewCell.swift */; };
 		34F70CD92C58633900513175 /* Employee.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F70CD82C58633900513175 /* Employee.swift */; };
+		34F70D632C5AF07600513175 /* PersonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34F70D622C5AF07600513175 /* PersonTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		34F70CD22C584EC200513175 /* ListScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListScreen.swift; sourceTree = "<group>"; };
 		34F70CD52C58552D00513175 /* EmployeeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeTableViewCell.swift; sourceTree = "<group>"; };
 		34F70CD82C58633900513175 /* Employee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Employee.swift; sourceTree = "<group>"; };
+		34F70D622C5AF07600513175 /* PersonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				34F70CD52C58552D00513175 /* EmployeeTableViewCell.swift */,
+				34F70D622C5AF07600513175 /* PersonTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				34F70CBD2C584D3D00513175 /* AppDelegate.swift in Sources */,
 				34F70CBF2C584D3D00513175 /* SceneDelegate.swift in Sources */,
 				34F70CD62C58552D00513175 /* EmployeeTableViewCell.swift in Sources */,
+				34F70D632C5AF07600513175 /* PersonTableViewCell.swift in Sources */,
 				34F70CD32C584EC200513175 /* ListScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

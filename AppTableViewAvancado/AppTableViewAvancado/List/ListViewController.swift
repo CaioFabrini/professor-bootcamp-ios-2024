@@ -77,15 +77,21 @@ extension ListViewController: UITableViewDataSource {
 
   // numero de linhas por section
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return list.count
+    return list.count + 2
   }
 
   // metodo responsavel pela criação das celulas
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier, for: indexPath) as? EmployeeTableViewCell
-    cell?.delegate = self
-    cell?.setupCell(employee: list[indexPath.row])
-    return cell ?? UITableViewCell()
+    if indexPath.row == 0 || indexPath.row == 1 {
+      let cell = tableView.dequeueReusableCell(withIdentifier: PersonTableViewCell.identifier, for: indexPath) as? PersonTableViewCell
+      cell?.setupCell(name: "Caio", lastName: "Fabrini")
+      return cell ?? UITableViewCell()
+    } else {
+      let cell = tableView.dequeueReusableCell(withIdentifier: EmployeeTableViewCell.identifier, for: indexPath) as? EmployeeTableViewCell
+      cell?.delegate = self
+      cell?.setupCell(employee: list[indexPath.row - 2])
+      return cell ?? UITableViewCell()
+    }
   }
 }
 
