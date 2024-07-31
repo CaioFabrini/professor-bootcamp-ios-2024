@@ -68,8 +68,10 @@ class ListViewController: UIViewController {
 
 extension ListViewController: UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    let employee = list[indexPath.row]
-    print(employee.name)
+    if indexPath.row != 0 && indexPath.row != 1 {
+      let employee = list[indexPath.row - 2]
+      print(employee.name)
+    }
   }
 }
 
