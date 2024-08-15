@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+protocol LoginScreenProtocol: AnyObject {
+  func tappedLoginButton()
+}
+
 class LoginScreen: UIView {
+
+  weak var delegate: LoginScreenProtocol?
 
   lazy var titleLabel: UILabel = {
     let label = UILabel()
@@ -53,7 +59,7 @@ class LoginScreen: UIView {
   }()
 
   @objc func tappedLoginButton() {
-    print(#function)
+    delegate?.tappedLoginButton()
   }
 
   lazy var orContinueLabel: UILabel = {
