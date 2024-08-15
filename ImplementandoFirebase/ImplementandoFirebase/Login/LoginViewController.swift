@@ -39,6 +39,7 @@ import FirebaseAuth
 class LoginViewController: UIViewController {
 
   var screen: LoginScreen?
+  var viewModel: LoginViewModel = LoginViewModel()
 
   override func loadView() {
     screen = LoginScreen()
@@ -48,6 +49,7 @@ class LoginViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     screen?.delegate = self
+    viewModel.delegate = self
   }
 
   func showAlert(title: String, message: String) {
@@ -68,21 +70,16 @@ extension LoginViewController: LoginScreenProtocol {
       return
     }
 
-    Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
-      guard let self else { return }
+    viewModel.fetchLogin(email: email, password: password)
+  }
+}
 
-      // Opção 1
-      guard error == nil else {
-        self.showAlert(title: "Atenção!", message: error?.localizedDescription ?? "")
-        return
-      }
-      // Opção 2
-      //      if let error = error {
-      //        print("deu ruim mesmo -> \(error.localizedDescription)")
-      //        return
-      //      }
-
-      print("Showw, login feito com sucesso!")
-    }
+extension LoginViewController: LoginViewModelProtocol {
+  func successLogin() {
+    print("Showw, login feito com sucesso!")
+  }
+  
+  func errorLogin(title: String, message: String) {
+   showAlert(title: title, message: message)
   }
 }

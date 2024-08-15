@@ -15,6 +15,7 @@
 		344667702C6AE84800A2930A /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 3446676F2C6AE84800A2930A /* Base */; };
 		3446677A2C6AE8A800A2930A /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667792C6AE8A800A2930A /* LoginScreen.swift */; };
 		3446677C2C6D6DD200A2930A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3446677B2C6D6DD200A2930A /* GoogleService-Info.plist */; };
+		3446677E2C6EB5D600A2930A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3446677D2C6EB5D600A2930A /* LoginViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		344667712C6AE84800A2930A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		344667792C6AE8A800A2930A /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		3446677B2C6D6DD200A2930A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3446677D2C6EB5D600A2930A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		E2F81C07622B068ACF9F44DD /* Pods-ImplementandoFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImplementandoFirebase.debug.xcconfig"; path = "Target Support Files/Pods-ImplementandoFirebase/Pods-ImplementandoFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		F382C3506407B3F1B98A0965 /* Pods_ImplementandoFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImplementandoFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -90,6 +92,7 @@
 			children = (
 				344667782C6AE89E00A2930A /* Screen */,
 				344667672C6AE84500A2930A /* LoginViewController.swift */,
+				3446677D2C6EB5D600A2930A /* LoginViewModel.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -228,6 +231,7 @@
 				344667682C6AE84500A2930A /* LoginViewController.swift in Sources */,
 				3446677A2C6AE8A800A2930A /* LoginScreen.swift in Sources */,
 				344667642C6AE84500A2930A /* AppDelegate.swift in Sources */,
+				3446677E2C6EB5D600A2930A /* LoginViewModel.swift in Sources */,
 				344667662C6AE84500A2930A /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
