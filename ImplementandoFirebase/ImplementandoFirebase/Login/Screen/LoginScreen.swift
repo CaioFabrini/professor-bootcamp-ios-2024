@@ -10,6 +10,7 @@ import UIKit
 
 protocol LoginScreenProtocol: AnyObject {
   func tappedLoginButton()
+  func tappedRegisterButton()
 }
 
 class LoginScreen: UIView {
@@ -119,7 +120,7 @@ class LoginScreen: UIView {
   }()
 
   @objc func tappedRegisterButton() {
-    print(#function)
+    delegate?.tappedRegisterButton()
   }
 
   init() {

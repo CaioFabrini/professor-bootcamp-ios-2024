@@ -16,6 +16,10 @@
 		3446677A2C6AE8A800A2930A /* LoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667792C6AE8A800A2930A /* LoginScreen.swift */; };
 		3446677C2C6D6DD200A2930A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3446677B2C6D6DD200A2930A /* GoogleService-Info.plist */; };
 		3446677E2C6EB5D600A2930A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3446677D2C6EB5D600A2930A /* LoginViewModel.swift */; };
+		344667812C7552CC00A2930A /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667802C7552CC00A2930A /* RegisterViewController.swift */; };
+		344667832C7552D700A2930A /* RegisterScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667822C7552D700A2930A /* RegisterScreen.swift */; };
+		344667862C756EFA00A2930A /* RegisterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667852C756EFA00A2930A /* RegisterViewModel.swift */; };
+		344667892C7571A900A2930A /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667882C7571A900A2930A /* Loading.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		344667792C6AE8A800A2930A /* LoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreen.swift; sourceTree = "<group>"; };
 		3446677B2C6D6DD200A2930A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3446677D2C6EB5D600A2930A /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		344667802C7552CC00A2930A /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		344667822C7552D700A2930A /* RegisterScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterScreen.swift; sourceTree = "<group>"; };
+		344667852C756EFA00A2930A /* RegisterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewModel.swift; sourceTree = "<group>"; };
+		344667882C7571A900A2930A /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
 		E2F81C07622B068ACF9F44DD /* Pods-ImplementandoFirebase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImplementandoFirebase.debug.xcconfig"; path = "Target Support Files/Pods-ImplementandoFirebase/Pods-ImplementandoFirebase.debug.xcconfig"; sourceTree = "<group>"; };
 		F382C3506407B3F1B98A0965 /* Pods_ImplementandoFirebase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImplementandoFirebase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -76,6 +84,8 @@
 		344667622C6AE84500A2930A /* ImplementandoFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				344667872C75719C00A2930A /* Loading */,
+				3446677F2C7552BA00A2930A /* Register */,
 				344667772C6AE88E00A2930A /* Login */,
 				344667632C6AE84500A2930A /* AppDelegate.swift */,
 				344667652C6AE84500A2930A /* SceneDelegate.swift */,
@@ -103,6 +113,32 @@
 				344667792C6AE8A800A2930A /* LoginScreen.swift */,
 			);
 			path = Screen;
+			sourceTree = "<group>";
+		};
+		3446677F2C7552BA00A2930A /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				344667842C755A3F00A2930A /* Screen */,
+				344667802C7552CC00A2930A /* RegisterViewController.swift */,
+				344667852C756EFA00A2930A /* RegisterViewModel.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
+		344667842C755A3F00A2930A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				344667822C7552D700A2930A /* RegisterScreen.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		344667872C75719C00A2930A /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				344667882C7571A900A2930A /* Loading.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		B819542C13DA5B9112EAE0F4 /* Frameworks */ = {
@@ -229,8 +265,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				344667682C6AE84500A2930A /* LoginViewController.swift in Sources */,
+				344667892C7571A900A2930A /* Loading.swift in Sources */,
 				3446677A2C6AE8A800A2930A /* LoginScreen.swift in Sources */,
 				344667642C6AE84500A2930A /* AppDelegate.swift in Sources */,
+				344667862C756EFA00A2930A /* RegisterViewModel.swift in Sources */,
+				344667832C7552D700A2930A /* RegisterScreen.swift in Sources */,
+				344667812C7552CC00A2930A /* RegisterViewController.swift in Sources */,
 				3446677E2C6EB5D600A2930A /* LoginViewModel.swift in Sources */,
 				344667662C6AE84500A2930A /* SceneDelegate.swift in Sources */,
 			);

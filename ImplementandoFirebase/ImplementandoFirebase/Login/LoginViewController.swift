@@ -40,16 +40,23 @@ class LoginViewController: UIViewController {
 
   var screen: LoginScreen?
   var viewModel: LoginViewModel = LoginViewModel()
+  var loading: Loading?
 
   override func loadView() {
     screen = LoginScreen()
     view = screen
   }
 
+  // TODA VEZ que você for customizar uma navigationController, você precisa reforçar com o ciclo de vida viewWillAppear, pois sempre que voltar para a sua tela, ele vai disparar este método que com ele, vai configurar exatamente a sua navigation da forma que você precisa para ESSA TELA!
+  override func viewWillAppear(_ animated: Bool) {
+    navigationController?.isNavigationBarHidden = true
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     screen?.delegate = self
     viewModel.delegate = self
+    loading = Loading(viewController: self)
   }
 
   func showAlert(title: String, message: String) {
@@ -61,6 +68,10 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: LoginScreenProtocol {
+  func tappedRegisterButton() {
+    navigationController?.pushViewController(RegisterViewController(), animated: true)
+  }
+  
   func tappedLoginButton() {
     guard let email: String = screen?.emailTextField.text,
           let password: String = screen?.passwordTextField.text,
@@ -75,6 +86,14 @@ extension LoginViewController: LoginScreenProtocol {
 }
 
 extension LoginViewController: LoginViewModelProtocol {
+  func loading(start: Bool) {
+    if start {
+      loading?.start(message: "Carregando...")
+    } else {
+      loading?.stop()
+    }
+  }
+  
   func successLogin() {
     print("Showw, login feito com sucesso!")
   }
