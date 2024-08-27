@@ -8,7 +8,6 @@ target 'ImplementandoFirebase' do
 	pod 'FirebaseAuth'
 	pod 'FirebaseFirestore'
 
-
 end
 
 # O bloco post_install é executado após a instalação dos pods.
