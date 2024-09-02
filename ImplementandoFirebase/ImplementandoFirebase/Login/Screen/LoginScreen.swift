@@ -147,7 +147,7 @@ class LoginScreen: UIView {
 
   func configConstraints() {
     NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 40),
+      titleLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 400),
       titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
 
       emailTextField.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 40),
