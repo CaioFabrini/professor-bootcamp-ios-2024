@@ -141,6 +141,85 @@ let veiculo = Veiculo(
 
 
 
+// Resolução
+
+// 1 -
+
+//[
+//   {
+//    "nome": "Ana",
+//    "idade": 28
+//   },
+//   {
+//    "nome": "Ricardo",
+//    "idade": 35
+//   }
+//]
+
+
+// 2 -
+
+//[
+//   {
+//    "id": 1,
+//    "nome": "Caderno",
+//    "preco": 15.9
+//   },
+//   {
+//    "id": 2,
+//    "nome": "Apontador",
+//    "preco": 1.5
+//   },
+//   {
+//    "id": 3,
+//    "nome": "Papel",
+//    "preco": 1
+//   }
+//]
+
+struct ProdutoEscolar {
+  var id: Int
+  var nome: String
+  var preco: Double
+}
+
+let listaProdutoEscolar: [ProdutoEscolar] = [
+  ProdutoEscolar(id: 1, nome: "Caderno", preco: 15.9),
+  ProdutoEscolar(id: 2, nome: "Apontador", preco: 1.5),
+  ProdutoEscolar(id: 3, nome: "Papel", preco: 1)
+]
+
+// 3 -
+
+//{
+//    "id": 101,
+//    "marca": "Toyota",
+//    "modelo": "Corolla",
+//    "ano": 2022,
+//    "acessorios": [
+//        {
+//            "nome": "Teto solar",
+//            "preco": 2500.00,
+//            "configuracaoAcessorio": {
+//                "tipo": "Luxo",
+//                "dataCriacao": "2021-06-15"
+//            }
+//        },
+//        {
+//            "nome": "Multimídia",
+//            "preco": 1200.00,
+//            "configuracaoAcessorio": {
+//                "tipo": "Tecnologia",
+//                "dataCriacao": "2021-08-20"
+//            }
+//        }
+//    ]
+//}
+
+
+
+
+
 
 
 
