@@ -301,7 +301,7 @@ if let jsonData = jsonStringAnimal.data(using: .utf8) {
 
 // Encodable é outro protocolo em Swift. Ele permite que você faça o oposto do que o Decodable faz: você pode converter um objeto Swift em dados no formato JSON. Isso é chamado de codificação.
 
-struct Dog: Encodable {
+struct Dog: Codable {
   var name: String
   var age: Int
   var breed: String
@@ -328,16 +328,41 @@ do {
   print("Error ao codificar o JSON: \(error.localizedDescription)")
 }
 
+// MARK: Codable
+
+// O Codable ele é um Typealias que é a junção do Decodable + Encodable
+// No nosso dia a dia recomendamos utilizar apenas ele!!
+// Pois ele já é ambos ;)
 
 // MARK: - Desafios
 
 // 1- Faça o Decodable desse json
 
-//{
-//    "title": "Inception",
-//    "director": "Christopher Nolan",
-//    "releaseYear": 2010
-//}
+let jsonStringAuthor = """
+{
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "releaseYear": 2010
+}
+"""
+
+struct Author: Decodable {
+  var title: String
+  var director: String
+  var releaseYear: Int
+}
+
+if let jsonData = jsonStringAuthor.data(using: .utf8) {
+  do {
+    let author = try JSONDecoder().decode(Author.self, from: jsonData)
+    print("Author Decodificado com sucesso!!")
+    print(author)
+  } catch  {
+    // Ele tenta (try) decodificar, se caso não conseguir, ele cai no caso do catch
+    print("Error ao decodificar o JSON: \(error.localizedDescription)")
+  }
+}
+
 
 // 2 - Faça o Encodable desse modelo
 
@@ -347,23 +372,28 @@ struct Student: Encodable {
     var grades: [Int]
 }
 
+let caio = Student(name: "Caio", age: 22, grades: [10,11,12])
+
+do {
+  let encoder = JSONEncoder()
+  encoder.outputFormatting = .prettyPrinted // facilita a leitura
+  let jsonData = try encoder.encode(caio)
+  if let jsonString = String(data: jsonData, encoding: .utf8) {
+    print(jsonString)
+  }
+} catch {
+  print("Error ao codificar o JSON: \(error.localizedDescription)")
+}
 
 // 3 - Faça o Decode funcionar
 
-//OBS: Você recebeu um JSON de uma API que contém detalhes sobre um veículo. O JSON tem 10 campos, mas você precisa extrair e usar apenas 4 deles: model, make, year, e color. Durante a decodificação, você encontrará alguns erros intencionais que precisam ser corrigidos.
+// OBS: Você recebeu um JSON de uma API que contém detalhes sobre um veículo. O JSON tem 10 campos, mas você precisa extrair e usar apenas 4 deles: model, make, year, e color. Durante a decodificação, você encontrará alguns erros intencionais que precisam ser corrigidos.
 
 struct Vehicle: Decodable {
     var model: String
     var make: String
-    var year: Int
+    var year: String
     var color: String
-
-    enum CodingKeys: String, CodingKey {
-        case model = "Model"
-        case make
-        case year = "Year"
-        case color = "colour"
-    }
 }
 
 let jsonStringVehicle = """
@@ -381,13 +411,13 @@ let jsonStringVehicle = """
 }
 """
 
-if let jsonAnimal = jsonStringAnimal.data(using: .utf8) {
+if let jsonVehicle = jsonStringVehicle.data(using: .utf8) {
   do {
     let decoder = JSONDecoder()
-    let vehicle = try decoder.decode([Vehicle].self, from: jsonAnimal)
-    // realize o print de todas as propriedades
+    let vehicle = try decoder.decode(Vehicle.self, from: jsonVehicle)
+   print(vehicle)
   } catch {
-    print("Erro ao decodificar o Animal: \(error)")
+    print("Erro ao decodificar o Vehicle: \(error)")
   }
 }
 
