@@ -178,8 +178,8 @@ class ViewController: UIViewController {
 //    deleteUser(id: 100)
 
     // APIClient
-//    getListUsersAPIClient()
-    createUserAPIClient(name: "Caio", job: "Developer iOS")
+    getListUsersAPIClient()
+//    createUserAPIClient(name: "Caio", job: "Developer iOS")
 
   }
 

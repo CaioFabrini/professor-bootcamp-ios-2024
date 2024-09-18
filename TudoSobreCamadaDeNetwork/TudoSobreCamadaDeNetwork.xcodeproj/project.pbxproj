@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		342C994E2C9B8F2B00065F76 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C994D2C9B8F2800065F76 /* NetworkLogger.swift */; };
 		346B079C2C93CA70002EE287 /* UserUpdateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B079B2C93CA70002EE287 /* UserUpdateResponse.swift */; };
 		346B079E2C93CBA0002EE287 /* UpdateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B079D2C93CBA0002EE287 /* UpdateUserRequest.swift */; };
 		346B07D62C98EC96002EE287 /* Documentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B07D52C98EC96002EE287 /* Documentation.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		342C994D2C9B8F2800065F76 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
 		346B079B2C93CA70002EE287 /* UserUpdateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateResponse.swift; sourceTree = "<group>"; };
 		346B079D2C93CBA0002EE287 /* UpdateUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserRequest.swift; sourceTree = "<group>"; };
 		346B07D52C98EC96002EE287 /* Documentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentation.swift; sourceTree = "<group>"; };
@@ -69,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		342C994B2C9B8F0600065F76 /* NetworkLogger */ = {
+			isa = PBXGroup;
+			children = (
+				342C994D2C9B8F2800065F76 /* NetworkLogger.swift */,
+			);
+			path = NetworkLogger;
+			sourceTree = "<group>";
+		};
 		346B07D42C98EC88002EE287 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +90,7 @@
 		346B07D72C98EE3A002EE287 /* NewService */ = {
 			isa = PBXGroup;
 			children = (
+				342C994B2C9B8F0600065F76 /* NetworkLogger */,
 				346B07EC2C9910C8002EE287 /* EmptyResponse */,
 				346B07E72C98FD01002EE287 /* APIClient */,
 				346B07E42C98F74A002EE287 /* RequestBuilder */,
@@ -274,6 +285,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				342C994E2C9B8F2B00065F76 /* NetworkLogger.swift in Sources */,
 				346B07E62C98F751002EE287 /* RequestBuilder.swift in Sources */,
 				346B07EB2C990709002EE287 /* APIClient.swift in Sources */,
 				3480C85E2C9256F500462E4C /* ViewController.swift in Sources */,

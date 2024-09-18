@@ -39,30 +39,42 @@ class APIClient: HTTPClient {
   func request<T>(request: APIRequest, decodeType: T.Type = EmptyResponse.self, completion: @escaping (Result<T, NetworkError>) -> Void) where T : Decodable {
 
     guard let request = requestBuilder.buildRequest(request: request, baseURL: baseURL, timeout: timeout) else {
-      completion(.failure(.invalidURL(url: baseURL + request.url)))
+      let url = baseURL + request.url
+      let error: NetworkError = .invalidURL(url: url)
+      NetworkLogger.logError(error: error, url: url)
+      completion(.failure(error))
       return
     }
 
     let task = session.dataTask(with: request) { [weak self] data, response, error in
       DispatchQueue.main.async {
 
+        NetworkLogger.log(request: request, response: response, data: data, error: error)
+
         guard let self else {
-          completion(.failure(.networkFailure(NSError(domain: "APIClient foi desalocada da memoria", code: -1))))
+          let error: NetworkError = .networkFailure(NSError(domain: "APIClient foi desalocada da memória", code: -1))
+          NetworkLogger.logError(error: error, url: request.url?.absoluteString ?? "")
+          completion(.failure(error))
           return
         }
 
         if let error {
-          completion(.failure(.networkFailure(error)))
+          let networkError: NetworkError = .networkFailure(error)
+          NetworkLogger.logError(error: networkError, url: request.url?.absoluteString ?? "")
+          completion(.failure(networkError))
           return
         }
 
         guard let httpResponse = response as? HTTPURLResponse  else {
+          NetworkLogger.logError(error: .invalidResponse, url: request.url?.absoluteString ?? "")
           completion(.failure(.invalidResponse))
           return
         }
 
         guard (200...299).contains(httpResponse.statusCode) else {
-          completion(.failure(.statusCode(code: httpResponse.statusCode)))
+          let error: NetworkError = .statusCode(code: httpResponse.statusCode)
+          NetworkLogger.logError(error: error, url: request.url?.absoluteString ?? "")
+          completion(.failure(error))
           return
         }
 
@@ -70,12 +82,15 @@ class APIClient: HTTPClient {
           if let emptyResponse = EmptyResponse() as? T {
             completion(.success(emptyResponse))
           } else {
-            completion(.failure(.decodingError(NSError(domain: "EmptyResponse error", code: -1))))
+            let error: NetworkError = .decodingError(NSError(domain: "EmptyResponse error", code: -1))
+            NetworkLogger.logError(error: error, url: request.url?.absoluteString ?? "")
+            completion(.failure(error))
           }
           return
         }
 
         guard let data else {
+          NetworkLogger.logError(error: .noData, url: request.url?.absoluteString ?? "")
           completion(.failure(.noData))
           return
         }
@@ -84,7 +99,9 @@ class APIClient: HTTPClient {
           let object = try self.decoder.decode(decodeType, from: data)
           completion(.success(object))
         } catch {
-          completion(.failure(.decodingError(error)))
+          let error: NetworkError = .decodingError(error)
+          NetworkLogger.logError(error: error, url: request.url?.absoluteString ?? "")
+          completion(.failure(error))
         }
       }
     }
