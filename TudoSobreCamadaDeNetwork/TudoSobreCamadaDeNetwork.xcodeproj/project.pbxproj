@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		342C994E2C9B8F2B00065F76 /* NetworkLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C994D2C9B8F2800065F76 /* NetworkLogger.swift */; };
+		342C99512C9BA93800065F76 /* LocalFileReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 342C99502C9BA93700065F76 /* LocalFileReader.swift */; };
 		346B079C2C93CA70002EE287 /* UserUpdateResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B079B2C93CA70002EE287 /* UserUpdateResponse.swift */; };
 		346B079E2C93CBA0002EE287 /* UpdateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B079D2C93CBA0002EE287 /* UpdateUserRequest.swift */; };
 		346B07D62C98EC96002EE287 /* Documentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 346B07D52C98EC96002EE287 /* Documentation.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		342C994D2C9B8F2800065F76 /* NetworkLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLogger.swift; sourceTree = "<group>"; };
+		342C99502C9BA93700065F76 /* LocalFileReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalFileReader.swift; sourceTree = "<group>"; };
 		346B079B2C93CA70002EE287 /* UserUpdateResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateResponse.swift; sourceTree = "<group>"; };
 		346B079D2C93CBA0002EE287 /* UpdateUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserRequest.swift; sourceTree = "<group>"; };
 		346B07D52C98EC96002EE287 /* Documentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Documentation.swift; sourceTree = "<group>"; };
@@ -79,6 +81,14 @@
 			path = NetworkLogger;
 			sourceTree = "<group>";
 		};
+		342C994F2C9BA92300065F76 /* LocalFileReader */ = {
+			isa = PBXGroup;
+			children = (
+				342C99502C9BA93700065F76 /* LocalFileReader.swift */,
+			);
+			path = LocalFileReader;
+			sourceTree = "<group>";
+		};
 		346B07D42C98EC88002EE287 /* Documentation */ = {
 			isa = PBXGroup;
 			children = (
@@ -90,9 +100,10 @@
 		346B07D72C98EE3A002EE287 /* NewService */ = {
 			isa = PBXGroup;
 			children = (
+				346B07E72C98FD01002EE287 /* APIClient */,
+				342C994F2C9BA92300065F76 /* LocalFileReader */,
 				342C994B2C9B8F0600065F76 /* NetworkLogger */,
 				346B07EC2C9910C8002EE287 /* EmptyResponse */,
-				346B07E72C98FD01002EE287 /* APIClient */,
 				346B07E42C98F74A002EE287 /* RequestBuilder */,
 				346B07E12C98F430002EE287 /* APIRequest */,
 				346B07DE2C98F2CE002EE287 /* Parameters */,
@@ -300,6 +311,7 @@
 				346B07E32C98F437002EE287 /* APIRequest.swift in Sources */,
 				346B07E92C98FD0E002EE287 /* HTTPClient.swift in Sources */,
 				346B07EE2C9910DB002EE287 /* EmptyResponse.swift in Sources */,
+				342C99512C9BA93800065F76 /* LocalFileReader.swift in Sources */,
 				3480C85A2C9256F500462E4C /* AppDelegate.swift in Sources */,
 				346B07DD2C98F271002EE287 /* HTTPMethod.swift in Sources */,
 				3480C8722C93A77100462E4C /* UserListDetail.swift in Sources */,
