@@ -12,6 +12,7 @@
 		341012052C7D4517008999BC /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 341012042C7D4517008999BC /* Lottie */; };
 		341012072C7D4834008999BC /* LoadingLottie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 341012062C7D4834008999BC /* LoadingLottie.swift */; };
 		341012092C7D48CD008999BC /* loading_animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 341012082C7D48CD008999BC /* loading_animation.json */; };
+		3431D35E2CAB5BD0002C68AB /* empty-animation.json in Resources */ = {isa = PBXBuildFile; fileRef = 3431D35D2CAB5BD0002C68AB /* empty-animation.json */; };
 		344667642C6AE84500A2930A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667632C6AE84500A2930A /* AppDelegate.swift */; };
 		344667662C6AE84500A2930A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667652C6AE84500A2930A /* SceneDelegate.swift */; };
 		344667682C6AE84500A2930A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344667672C6AE84500A2930A /* LoginViewController.swift */; };
@@ -31,6 +32,7 @@
 		341012012C7D399D008999BC /* LoadingShared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingShared.swift; sourceTree = "<group>"; };
 		341012062C7D4834008999BC /* LoadingLottie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingLottie.swift; sourceTree = "<group>"; };
 		341012082C7D48CD008999BC /* loading_animation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loading_animation.json; sourceTree = "<group>"; };
+		3431D35D2CAB5BD0002C68AB /* empty-animation.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "empty-animation.json"; sourceTree = "<group>"; };
 		344667602C6AE84500A2930A /* ImplementandoFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImplementandoFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		344667632C6AE84500A2930A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		344667652C6AE84500A2930A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				344667632C6AE84500A2930A /* AppDelegate.swift */,
 				344667652C6AE84500A2930A /* SceneDelegate.swift */,
 				341012082C7D48CD008999BC /* loading_animation.json */,
+				3431D35D2CAB5BD0002C68AB /* empty-animation.json */,
 				3446676C2C6AE84800A2930A /* Assets.xcassets */,
 				3446676E2C6AE84800A2930A /* LaunchScreen.storyboard */,
 				3446677B2C6D6DD200A2930A /* GoogleService-Info.plist */,
@@ -230,6 +233,7 @@
 				3446677C2C6D6DD200A2930A /* GoogleService-Info.plist in Resources */,
 				344667702C6AE84800A2930A /* Base in Resources */,
 				341012092C7D48CD008999BC /* loading_animation.json in Resources */,
+				3431D35E2CAB5BD0002C68AB /* empty-animation.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
