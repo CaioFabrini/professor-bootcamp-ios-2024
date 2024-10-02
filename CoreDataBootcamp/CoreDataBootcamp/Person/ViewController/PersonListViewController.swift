@@ -207,7 +207,8 @@ extension PersonListViewController {
 
 extension PersonListViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    print(searchText)
+    viewModel.filterPerson(text: searchText)
+    screen?.tableView.reloadData()
   }
 }
 

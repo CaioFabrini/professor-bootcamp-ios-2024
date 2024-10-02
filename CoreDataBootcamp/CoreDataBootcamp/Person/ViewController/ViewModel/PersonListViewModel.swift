@@ -16,6 +16,7 @@ class PersonListViewModel {
   private weak var delegate: PersonListViewModelProtocol?
   private let coreDataStack = CoreDataStack.shared
   private var persons: [Person] = []
+  private var personsFilter: [Person] = []
   private var personType: PersonType = .all
 
   public func delegate(delegate: PersonListViewModelProtocol?) {
@@ -37,6 +38,7 @@ class PersonListViewModel {
 
     do {
       persons = try coreDataStack.context.fetch(fetchRequest)
+      personsFilter = persons
       delegate?.updateTableView()
     } catch {
       print("Deu ruim")
@@ -44,6 +46,14 @@ class PersonListViewModel {
   }
 
   func createPerson(name: String, age: String, cpf: String) {
+    let fetchRequest: NSFetchRequest<Person> = Person.fetchRequest()
+    let containsCPF = try? coreDataStack.context.fetch(fetchRequest).contains(where: { $0.cpf == Int64(cpf) })
+
+    if containsCPF ?? false {
+       print("CPF já cadastrado")
+      return
+    }
+
     let person = Person(context: coreDataStack.context)
     person.name = name
     person.age = Int64(age) ?? 0
@@ -53,7 +63,7 @@ class PersonListViewModel {
   }
 
   func deletePerson(indexPath: IndexPath) {
-    let person = persons[indexPath.row]
+    let person = personsFilter[indexPath.row]
     coreDataStack.context.delete(person)
     coreDataStack.saveContext()
     fetchListPerson(type: personType)
@@ -68,10 +78,20 @@ class PersonListViewModel {
   }
 
   var numberOfRows: Int {
-    persons.count
+    personsFilter.count
   }
 
   func loadCurrentPerson(indexPath: IndexPath) -> Person {
-    persons[indexPath.row]
+    personsFilter[indexPath.row]
   }
+
+  func filterPerson(text: String) {
+    if text.isEmpty {
+      personsFilter = persons
+      return
+    }
+    personsFilter = persons.filter({ $0.name?.lowercased().contains(text.lowercased()) ?? false})
+  }
+
+
 }
