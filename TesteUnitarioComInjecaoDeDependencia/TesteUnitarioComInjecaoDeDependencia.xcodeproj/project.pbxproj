@@ -18,6 +18,7 @@
 		34B98DDB2CBDE31500641D52 /* TaskViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B98DDA2CBDE31500641D52 /* TaskViewControllerTests.swift */; };
 		34B98DDD2CBDE34200641D52 /* TaskViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B98DDC2CBDE34200641D52 /* TaskViewModelTests.swift */; };
 		34B98DE12CBDF64D00641D52 /* TaskViewModelDelegateSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B98DE02CBDF64D00641D52 /* TaskViewModelDelegateSpy.swift */; };
+		34B98DE92CC1CD2000641D52 /* TaskViewModelProtocolSpy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34B98DE82CC1CD2000641D52 /* TaskViewModelProtocolSpy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		34B98DDA2CBDE31500641D52 /* TaskViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewControllerTests.swift; sourceTree = "<group>"; };
 		34B98DDC2CBDE34200641D52 /* TaskViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelTests.swift; sourceTree = "<group>"; };
 		34B98DE02CBDF64D00641D52 /* TaskViewModelDelegateSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelDelegateSpy.swift; sourceTree = "<group>"; };
+		34B98DE82CC1CD2000641D52 /* TaskViewModelProtocolSpy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModelProtocolSpy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 		34B98DDE2CBDE36400641D52 /* TaskViewController */ = {
 			isa = PBXGroup;
 			children = (
+				34B98DE72CC1CD1D00641D52 /* Spy */,
 				34B98DDA2CBDE31500641D52 /* TaskViewControllerTests.swift */,
 			);
 			path = TaskViewController;
@@ -163,6 +166,14 @@
 			isa = PBXGroup;
 			children = (
 				34B98DE02CBDF64D00641D52 /* TaskViewModelDelegateSpy.swift */,
+			);
+			path = Spy;
+			sourceTree = "<group>";
+		};
+		34B98DE72CC1CD1D00641D52 /* Spy */ = {
+			isa = PBXGroup;
+			children = (
+				34B98DE82CC1CD2000641D52 /* TaskViewModelProtocolSpy.swift */,
 			);
 			path = Spy;
 			sourceTree = "<group>";
@@ -287,6 +298,7 @@
 			files = (
 				34B98DDD2CBDE34200641D52 /* TaskViewModelTests.swift in Sources */,
 				34B98DE12CBDF64D00641D52 /* TaskViewModelDelegateSpy.swift in Sources */,
+				34B98DE92CC1CD2000641D52 /* TaskViewModelProtocolSpy.swift in Sources */,
 				34B98DDB2CBDE31500641D52 /* TaskViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

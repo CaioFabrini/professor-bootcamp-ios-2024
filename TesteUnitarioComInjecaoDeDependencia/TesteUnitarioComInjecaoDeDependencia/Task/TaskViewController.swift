@@ -30,6 +30,7 @@ class TaskViewController: UIViewController {
     setupNavigationBar()
     viewModel.delegate = self
     screen?.configTableViewProtocols(delegate: self, dataSource: self)
+    viewModel.fetchTasks()
   }
 
   func setupNavigationBar() {

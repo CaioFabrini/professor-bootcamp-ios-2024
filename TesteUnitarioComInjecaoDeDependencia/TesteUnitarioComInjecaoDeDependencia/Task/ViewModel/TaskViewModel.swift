@@ -7,8 +7,20 @@
 
 import Foundation
 
+
+protocol ServiceProtocol {
+  func fetchTasks(completion: @escaping (Result<[Task], Error>) -> Void)
+}
+
+class Service: ServiceProtocol {
+  func fetchTasks(completion: @escaping (Result<[Task], any Error>) -> Void) {
+    // logica para API -> URLSession....
+    completion(.success([]))
+  }
+}
+
 protocol TaskViewModelDelegate: AnyObject {
-  func reloadData()
+    func reloadData()
 }
 
 protocol TaskViewModelProtocol: AnyObject {
@@ -18,11 +30,17 @@ protocol TaskViewModelProtocol: AnyObject {
   func addTask(title: String)
   func changeTaskStatus(indexPath: IndexPath)
   func removeTask(indexPath: IndexPath)
+  func fetchTasks()
 }
 
 class TaskViewModel {
   weak var delegate: TaskViewModelDelegate?
   private var tasks: [Task] = []
+  let service: ServiceProtocol
+
+  init(service: ServiceProtocol = Service()) {
+    self.service = service
+  }
 }
 
 extension TaskViewModel: TaskViewModelProtocol {
@@ -48,5 +66,18 @@ extension TaskViewModel: TaskViewModelProtocol {
   func removeTask(indexPath: IndexPath) {
     tasks.remove(at: indexPath.row)
     delegate?.reloadData()
+  }
+
+  func fetchTasks() {
+     service.fetchTasks { [weak self] result in
+      guard let self else { return }
+      switch result {
+      case .success(let tasks):
+        self.tasks = tasks
+        delegate?.reloadData()
+      case .failure:
+        break
+      }
+    }
   }
 }

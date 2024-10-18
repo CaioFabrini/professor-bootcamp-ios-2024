@@ -22,13 +22,31 @@ import XCTest
 // - Verificar a quantidade de vezes que o método foi chamado e contabilizar
 // - Capturar parâmetros que foram passados nos métodos
 
+class ServiceProtocolSpy: ServiceProtocol {
+
+  var fetchTasksCalled: Bool = false
+  var shouldReturnError: Bool = false
+  var fetchedTasks: [Task] = []
+
+  func fetchTasks(completion: @escaping (Result<[Task], any Error>) -> Void) {
+    fetchTasksCalled = true
+    if shouldReturnError {
+      completion(.failure(NSError(domain: "Error", code: -1)))
+    } else {
+      completion(.success(fetchedTasks))
+    }
+  }
+}
+
 final class TaskViewModelTests: XCTestCase {
 
   var viewModel: TaskViewModel!
   var spy: TaskViewModelDelegateSpy!
+  var serviceSpy: ServiceProtocolSpy!
 
   override func setUpWithError() throws {
-    viewModel = TaskViewModel()
+    serviceSpy = ServiceProtocolSpy()
+    viewModel = TaskViewModel(service: serviceSpy)
     spy = TaskViewModelDelegateSpy()
     viewModel.delegate = spy
   }
@@ -36,6 +54,7 @@ final class TaskViewModelTests: XCTestCase {
   override func tearDownWithError() throws {
     viewModel = nil
     spy = nil
+    serviceSpy = nil
   }
 
   func testAddTask() throws {
@@ -72,4 +91,30 @@ final class TaskViewModelTests: XCTestCase {
     XCTAssertTrue(spy.didReloadDataCalled)
   }
 
+  func testFetchTasksSuccess() {
+    // Given:
+    let task1 = Task(id: UUID(), title: "Teste 1", isCompleted: false)
+    let task2 = Task(id: UUID(), title: "Teste 2", isCompleted: true)
+    serviceSpy.fetchedTasks = [task1, task2]
+
+    // When:
+    viewModel.fetchTasks()
+
+    // Then:
+    XCTAssertTrue(serviceSpy.fetchTasksCalled)
+    XCTAssertEqual(viewModel.numberOfRows, 2)
+    XCTAssertEqual(viewModel.loadCurrentTask(indexPath: IndexPath(row: 0, section: 0)).title, task1.title)
+  }
+
+   func testFetchTasksFailure() {
+    // Given:
+     serviceSpy.shouldReturnError = true
+
+     // When:
+     viewModel.fetchTasks()
+
+     // Then:
+     XCTAssertTrue(serviceSpy.fetchTasksCalled)
+     XCTAssertEqual(viewModel.numberOfRows, 0)
+  }
 }
