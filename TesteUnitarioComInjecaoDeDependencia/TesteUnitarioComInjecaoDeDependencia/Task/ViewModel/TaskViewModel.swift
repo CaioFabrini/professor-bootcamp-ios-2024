@@ -68,6 +68,7 @@ extension TaskViewModel: TaskViewModelProtocol {
     delegate?.reloadData()
   }
 
+  // MARK: Método com que evita MEMORY LEAK
   func fetchTasks() {
      service.fetchTasks { [weak self] result in
       guard let self else { return }
@@ -80,4 +81,17 @@ extension TaskViewModel: TaskViewModelProtocol {
       }
     }
   }
+
+// MARK: Método com MEMORY LEAK
+//  func fetchTasks() {
+//     service.fetchTasks { result in
+//      switch result {
+//      case .success(let tasks):
+//        self.tasks = tasks
+//        self.delegate?.reloadData()
+//      case .failure:
+//        break
+//      }
+//    }
+//  }
 }

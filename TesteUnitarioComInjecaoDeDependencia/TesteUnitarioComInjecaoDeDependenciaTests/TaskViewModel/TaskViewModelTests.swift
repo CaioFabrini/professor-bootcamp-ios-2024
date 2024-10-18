@@ -25,16 +25,11 @@ import XCTest
 class ServiceProtocolSpy: ServiceProtocol {
 
   var fetchTasksCalled: Bool = false
-  var shouldReturnError: Bool = false
-  var fetchedTasks: [Task] = []
+  var fetchTasksCompletion: ((Result<[Task], any Error>) -> Void)?
 
   func fetchTasks(completion: @escaping (Result<[Task], any Error>) -> Void) {
     fetchTasksCalled = true
-    if shouldReturnError {
-      completion(.failure(NSError(domain: "Error", code: -1)))
-    } else {
-      completion(.success(fetchedTasks))
-    }
+    fetchTasksCompletion = completion
   }
 }
 
@@ -95,10 +90,10 @@ final class TaskViewModelTests: XCTestCase {
     // Given:
     let task1 = Task(id: UUID(), title: "Teste 1", isCompleted: false)
     let task2 = Task(id: UUID(), title: "Teste 2", isCompleted: true)
-    serviceSpy.fetchedTasks = [task1, task2]
-
+    let taskList = [task1, task2]
     // When:
     viewModel.fetchTasks()
+    serviceSpy.fetchTasksCompletion?(.success(taskList))
 
     // Then:
     XCTAssertTrue(serviceSpy.fetchTasksCalled)
@@ -107,14 +102,50 @@ final class TaskViewModelTests: XCTestCase {
   }
 
    func testFetchTasksFailure() {
-    // Given:
-     serviceSpy.shouldReturnError = true
-
      // When:
      viewModel.fetchTasks()
+     serviceSpy.fetchTasksCompletion?(.failure(NSError(domain: "Error", code: -1)))
 
      // Then:
      XCTAssertTrue(serviceSpy.fetchTasksCalled)
      XCTAssertEqual(viewModel.numberOfRows, 0)
   }
+
+  func testFetchDeallocated() {
+    weak var weakViewModel: TaskViewModel?
+
+    autoreleasepool {
+      var viewModel: TaskViewModel? = TaskViewModel(service: serviceSpy)
+      weakViewModel = viewModel
+      viewModel?.fetchTasks()
+
+      XCTAssertNotNil(weakViewModel)
+
+      serviceSpy.fetchTasksCompletion?(.success([]))
+      viewModel = nil
+    }
+    
+    XCTAssertNil(weakViewModel)
+  }
+
+  func testFetchRequestDeallocatedBeforeTasksCompletion() {
+      // Given:
+    weak var weakViewModel: TaskViewModel?
+
+    autoreleasepool {
+      var viewModel: TaskViewModel? = TaskViewModel(service: serviceSpy)
+      weakViewModel = viewModel
+
+      // When:
+      viewModel?.fetchTasks()
+      viewModel = nil
+      serviceSpy.fetchTasksCompletion?(.success([]))
+
+      // Then:
+      XCTAssertNil(weakViewModel)
+      XCTAssertEqual(weakViewModel?.numberOfRows, nil)
+    }
+  }
+
+
 }
