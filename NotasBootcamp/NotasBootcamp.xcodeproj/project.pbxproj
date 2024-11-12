@@ -16,6 +16,7 @@
 		34663C722CDC4C4E001D76FB /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34663C712CDC4C4B001D76FB /* Note.swift */; };
 		34663C742CDC4D41001D76FB /* NoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34663C732CDC4D3E001D76FB /* NoteViewModel.swift */; };
 		34663C772CDC52AE001D76FB /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34663C762CDC52AE001D76FB /* NoteDetailView.swift */; };
+		34663C7B2CDD90E7001D76FB /* AddNoteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34663C7A2CDD90E7001D76FB /* AddNoteView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		34663C712CDC4C4B001D76FB /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		34663C732CDC4D3E001D76FB /* NoteViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteViewModel.swift; sourceTree = "<group>"; };
 		34663C762CDC52AE001D76FB /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
+		34663C7A2CDD90E7001D76FB /* AddNoteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		34663C632CDC44DB001D76FB /* NotasBootcamp */ = {
 			isa = PBXGroup;
 			children = (
+				34663C792CDD90D0001D76FB /* AddNoteView */,
 				34663C752CDC52A4001D76FB /* NoteDetailView */,
 				34663C702CDC4C47001D76FB /* Model */,
 				34663C6D2CDC4BF4001D76FB /* Notes */,
@@ -128,6 +131,14 @@
 				34663C762CDC52AE001D76FB /* NoteDetailView.swift */,
 			);
 			path = NoteDetailView;
+			sourceTree = "<group>";
+		};
+		34663C792CDD90D0001D76FB /* AddNoteView */ = {
+			isa = PBXGroup;
+			children = (
+				34663C7A2CDD90E7001D76FB /* AddNoteView.swift */,
+			);
+			path = AddNoteView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +220,7 @@
 				34663C6C2CDC44FA001D76FB /* Color+Extension.swift in Sources */,
 				34663C6F2CDC4C02001D76FB /* NotesView.swift in Sources */,
 				34663C672CDC44DB001D76FB /* NotasBootcampApp.swift in Sources */,
+				34663C7B2CDD90E7001D76FB /* AddNoteView.swift in Sources */,
 				34663C772CDC52AE001D76FB /* NoteDetailView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
