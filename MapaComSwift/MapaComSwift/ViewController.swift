@@ -9,7 +9,7 @@ import UIKit
 import MapKit
 
 class ViewController: UIViewController {
-    private var screen: Screen!
+    private var screen: Screen?
     private let locationManager = CLLocationManager()
     private var isFirstUpdate = true
 
@@ -31,12 +31,12 @@ class ViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.startUpdatingLocation()
 
-        screen.mapView.showsUserLocation = true
+        screen?.mapView.showsUserLocation = true
     }
 
     // MARK: - Actions
     private func setupActions() {
-        screen.centerButton.addTarget(self, action: #selector(centerMapOnUserLocation), for: .touchUpInside)
+        screen?.centerButton.addTarget(self, action: #selector(centerMapOnUserLocation), for: .touchUpInside)
     }
 
     @objc private func centerMapOnUserLocation() {
@@ -50,7 +50,7 @@ class ViewController: UIViewController {
             latitudinalMeters: 1000,
             longitudinalMeters: 1000
         )
-        screen.mapView.setRegion(region, animated: true)
+        screen?.mapView.setRegion(region, animated: true)
     }
 }
 
